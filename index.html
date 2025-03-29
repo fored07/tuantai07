@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập Gaming</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Orbitron', sans-serif;
+            text-align: center;
+            background-color: #000;
+            color: white;
+            margin: 0;
+            overflow: hidden;
+        }
+        .neon-text {
+            font-size: 24px;
+            color: #0ff;
+            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+        }
+        #login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #login-form {
+            background: rgba(20, 20, 20, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #0ff;
+            box-shadow: 0 0 20px #0ff;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input {
+            background: #111;
+            color: #0ff;
+            border: 1px solid #0ff;
+            text-align: center;
+        }
+        button {
+            background: #0ff;
+            color: black;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        button:hover {
+            background: #00f;
+            color: white;
+            box-shadow: 0 0 10px #00f;
+        }
+        #video-container {
+            display: none;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: black;
+            align-items: center;
+            justify-content: center;
+        }
+        video {
+            width: 80vw;
+            height: 80vh;
+            border: 3px solid #0ff;
+            box-shadow: 0 0 20px #0ff;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #0ff;
+            box-shadow: 0 0 15px #0ff;
+        }
+        #play-button {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 255, 255, 0.8);
+            color: black;
+            padding: 10px 20px;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0ff;
+        }
+        #play-button:hover {
+            background: #00f;
+            color: white;
+            box-shadow: 0 0 20px #00f;
+        }
+
+        /* Video toàn màn hình trên điện thoại */
+        @media (max-width: 768px) {
+            video {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="login-container">
+        <div id="login-form">
+            <img src="https://i.imgur.com/fEHFsGO.jpeg" alt="Avatar" class="avatar">
+            <h2 class="neon-text">Đăng Nhập</h2>
+            <input type="text" id="username" placeholder="Tên đăng nhập"><br>
+            <input type="password" id="password" placeholder="Mật khẩu"><br>
+            <button onclick="checkLogin()">Đăng Nhập</button>
+        </div>
+    </div>
+
+    <div id="video-container">
+        <video id="myVideo" playsinline>
+            <source src="https://tuantaileanh.sbs/vlxx.MP4" type="video/mp4">
+        </video>
+        <button id="play-button" onclick="playVideo()">▶ Phát Video</button>
+    </div>
+
+    <script>
+        function checkLogin() {
+            var user = document.getElementById("username").value;
+            var pass = document.getElementById("password").value;if (user === "tuantai" && pass === "2207") {
+                document.getElementById("login-container").style.display = "none";
+                var videoContainer = document.getElementById("video-container");
+                var video = document.getElementById("myVideo");
+                var playButton = document.getElementById("play-button");
+
+                videoContainer.style.display = "flex";
+                video.muted = false;
+                video.volume = 1.0; // 🔊 Âm lượng tối đa
+
+                video.play().then(() => {
+                    playButton.style.display = "none";
+                }).catch(() => {
+                    playButton.style.display = "block";
+                });
+
+                // Yêu cầu toàn màn hình trên điện thoại
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.mozRequestFullScreen) {
+                    video.mozRequestFullScreen();
+                } else if (video.webkitRequestFullscreen) {
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) {
+                    video.msRequestFullscreen();
+                }
+
+                video.onended = function() {
+                    document.getElementById("video-container").style.display = "none";
+                };
+            } else {
+                alert("Sai tài khoản hoặc mật khẩu!");
+            }
+        }
+
+        function playVideo() {
+            var video = document.getElementById("myVideo");
+            video.volume = 1.0; // 🔊 Đảm bảo âm lượng tối đa khi nhấn play
+            video.play();
+            document.getElementById("play-button").style.display = "none";
+        }
+    </script>
+
+</body>
+</html>
