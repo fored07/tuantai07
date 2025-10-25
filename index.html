@@ -1,187 +1,198 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tặng Anh Em Xã Đoàn 10A1</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tặng Anh Em Xã Đoàn 10A1</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
-        body {
-            font-family: 'Orbitron', sans-serif;
-            text-align: center;
-            background-color: #000;
-            color: white;
-            margin: 0;
-            overflow: hidden;
-        }
-        .neon-text {
-            font-size: 24px;
-            color: #0ff;
-            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
-        }
-        #login-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        #login-form {
-            background: rgba(20, 20, 20, 0.9);
-            padding: 20px;
-            border-radius: 10px;
-            border: 2px solid #0ff;
-            box-shadow: 0 0 20px #0ff;
-            text-align: center;
-        }
-        input, button {
-            padding: 10px;
-            margin: 5px;
-            width: 80%;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        input {
-            background: #111;
-            color: #0ff;
-            border: 1px solid #0ff;
-            text-align: center;
-        }
-        button {
-            background: #0ff;
-            color: black;
-            cursor: pointer;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-        button:hover {
-            background: #00f;
-            color: white;
-            box-shadow: 0 0 10px #00f;
-        }
-        #video-container {
-            display: none;
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            background: black;
-            align-items: center;
-            justify-content: center;
-        }
-        video {
-            width: 80vw;
-            height: 80vh;
-            border: 3px solid #0ff;
-            box-shadow: 0 0 20px #0ff;
-        }
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 3px solid #0ff;
-            box-shadow: 0 0 15px #0ff;
-        }
-        #play-button {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 255, 255, 0.8);
-            color: black;
-            padding: 10px 20px;
-            font-size: 20px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            box-shadow: 0 0 10px #0ff;
-        }
-        #play-button:hover {
-            background: #00f;
-            color: white;
-            box-shadow: 0 0 20px #00f;
-        }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+      background-color: #000;
+      color: white;
+      margin: 0;
+      overflow: hidden;
+    }
 
-        /* Video toàn màn hình trên điện thoại */
-        @media (max-width: 768px) {
-            video {
-                width: 100vw;
-                height: 100vh;
-            }
-        }
-    </style>
+    .neon-text {
+      font-size: 24px;
+      color: #0ff;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+    }
+
+    #login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    #login-form {
+      background: rgba(20, 20, 20, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      border: 2px solid #0ff;
+      box-shadow: 0 0 20px #0ff;
+      text-align: center;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 10px #0ff; }
+      to { box-shadow: 0 0 25px #0ff; }
+    }
+
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      width: 80%;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    input {
+      background: #111;
+      color: #0ff;
+      border: 1px solid #0ff;
+      text-align: center;
+    }
+
+    button {
+      background: #0ff;
+      color: black;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #00f;
+      color: white;
+      box-shadow: 0 0 10px #00f;
+    }
+
+    #video-container {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background: black;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    video {
+      width: 80vw;
+      height: auto;
+      max-height: 80vh;
+      border: 3px solid #0ff;
+      box-shadow: 0 0 20px #0ff;
+      border-radius: 10px;
+    }
+
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid #0ff;
+      box-shadow: 0 0 15px #0ff;
+    }
+
+    #play-button {
+      display: none;
+      margin-top: 20px;
+      background: rgba(0, 255, 255, 0.8);
+      color: black;
+      padding: 10px 20px;
+      font-size: 20px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #0ff;
+    }
+
+    #play-button:hover {
+      background: #00f;
+      color: white;
+      box-shadow: 0 0 20px #00f;
+    }
+
+    @media (max-width: 768px) {
+      video {
+        width: 100vw;
+        height: 100vh;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <div id="login-container">
-        <div id="login-form">
-            <img src="https://i.imgur.com/fEHFsGO.jpeg" alt="Avatar" class="avatar">
-            <h2 class="neon-text">Login Và Chờ Đợi</h2>
-            <input type="text" id="username" placeholder="Tên đăng nhập"><br>
-            <input type="password" id="password" placeholder="Mật khẩu"><br>
-            <button onclick="checkLogin()">Đăng Nhập</button>
-        </div>
+  <div id="login-container">
+    <div id="login-form">
+      <img src="https://i.imgur.com/fEHFsGO.jpeg" alt="Avatar" class="avatar">
+      <h2 class="neon-text">Login Và Chờ Đợi</h2>
+      <input type="text" id="username" placeholder="Tên đăng nhập"><br>
+      <input type="password" id="password" placeholder="Mật khẩu"><br>
+      <button onclick="checkLogin()">Đăng Nhập</button>
     </div>
+  </div>
 
-    <div id="video-container">
-        <video id="myVideo" playsinline>
-            <source src="https://drive.google.com/file/d/1zRgNgqbZaAlNkRcYTj85rXtZvk6saOkK/view/" type="video/mp4">
-        </video>
-        <button id="play-button" onclick="playVideo()">▶ Phát Video</button>
-    </div>
+  <div id="video-container">
+    <video id="myVideo" playsinline controls>
+      <!-- ⚠️ Chú ý: thay ID video Drive -->
+      <source src="https://drive.google.com/uc?export=download&id=1zRgNgqbZaAlNkRcYTj85rXtZvk6saOkK" type="video/mp4">
+      Trình duyệt của bạn không hỗ trợ video.
+    </video>
+    <button id="play-button" onclick="playVideo()">▶ Phát Video</button>
+  </div>
 
-    <script>
-        function checkLogin() {
-            var user = document.getElementById("username").value;
-            var pass = document.getElementById("password").value;if (user === "tuantai" && pass === "2207") {
-                document.getElementById("login-container").style.display = "none";
-                var videoContainer = document.getElementById("video-container");
-                var video = document.getElementById("myVideo");
-                var playButton = document.getElementById("play-button");
+  <script>
+    function checkLogin() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
 
-                videoContainer.style.display = "flex";
-                video.muted = false;
-                video.volume = 1.0; // 🔊 Âm lượng tối đa
+      if (user === "tuantai" && pass === "2207") {
+        document.getElementById("login-container").style.display = "none";
+        const videoContainer = document.getElementById("video-container");
+        const video = document.getElementById("myVideo");
+        const playButton = document.getElementById("play-button");
 
-                video.play().then(() => {
-                    playButton.style.display = "none";
-                }).catch(() => {
-                    playButton.style.display = "block";
-                });
+        videoContainer.style.display = "flex";
+        video.volume = 1.0;
 
-                // Yêu cầu toàn màn hình trên điện thoại
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.mozRequestFullScreen) {
-                    video.mozRequestFullScreen();
-                } else if (video.webkitRequestFullscreen) {
-                    video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) {
-                    video.msRequestFullscreen();
-                }
+        video.play().then(() => {
+          playButton.style.display = "none";
+        }).catch(() => {
+          playButton.style.display = "block";
+        });
 
-                video.onended = function() {
-                    document.getElementById("video-container").style.display = "none";
-                };
-            } else {
-                alert("Sai tài khoản hoặc mật khẩu!");
-            }
-        }
+        if (video.requestFullscreen) video.requestFullscreen();
+        else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+        else if (video.msRequestFullscreen) video.msRequestFullscreen();
 
-        function playVideo() {
-            var video = document.getElementById("myVideo");
-            video.volume = 1.0; // 🔊 Đảm bảo âm lượng tối đa khi nhấn play
-            video.play();
-            document.getElementById("play-button").style.display = "none";
-        }
-    </script>
+        video.onended = () => {
+          document.getElementById("video-container").style.display = "none";
+        };
+      } else {
+        alert("Sai tài khoản hoặc mật khẩu!");
+      }
+    }
+
+    function playVideo() {
+      const video = document.getElementById("myVideo");
+      video.volume = 1.0;
+      video.play();
+      document.getElementById("play-button").style.display = "none";
+    }
+  </script>
 
 </body>
 </html>
-
-
-
