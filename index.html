@@ -120,7 +120,7 @@
     <div id="login-container">
         <div id="login-form">
             <img src="https://i.imgur.com/fEHFsGO.jpeg" alt="Avatar" class="avatar">
-            <h2 class="neon-text">Con trai thì mới login nhé</h2>
+            <h2 class="neon-text">Login Và Chờ Đợi</h2>
             <input type="text" id="username" placeholder="Tên đăng nhập"><br>
             <input type="password" id="password" placeholder="Mật khẩu"><br>
             <button onclick="checkLogin()">Đăng Nhập</button>
@@ -128,8 +128,9 @@
     </div>
 
     <div id="video-container">
-        <video id="myVideo" playsinline>
-            <source src="https://streamable.com/qtgeko" type="video/mp4">
+        <video id="myVideo" playsinline muted autoplay>
+            <!-- ⚠️ Thay link dưới đây bằng link mp4 thật -->
+            <source src="https://cdn-cf-east.streamable.com/video/mp4/qtgeko.mp4" type="video/mp4">
         </video>
         <button id="play-button" onclick="playVideo()">▶ Phát Video</button>
     </div>
@@ -137,15 +138,18 @@
     <script>
         function checkLogin() {
             var user = document.getElementById("username").value;
-            var pass = document.getElementById("password").value;if (user === "tuantai" && pass === "2207") {
+            var pass = document.getElementById("password").value;
+            if (user === "tuantai" && pass === "2207") {
                 document.getElementById("login-container").style.display = "none";
                 var videoContainer = document.getElementById("video-container");
                 var video = document.getElementById("myVideo");
                 var playButton = document.getElementById("play-button");
 
                 videoContainer.style.display = "flex";
+
+                // Bật âm thanh sau khi đăng nhập
                 video.muted = false;
-                video.volume = 1.0; // 🔊 Âm lượng tối đa
+                video.volume = 1.0;
 
                 video.play().then(() => {
                     playButton.style.display = "none";
@@ -153,15 +157,11 @@
                     playButton.style.display = "block";
                 });
 
-                // Yêu cầu toàn màn hình trên điện thoại
+                // Yêu cầu toàn màn hình
                 if (video.requestFullscreen) {
                     video.requestFullscreen();
-                } else if (video.mozRequestFullScreen) {
-                    video.mozRequestFullScreen();
                 } else if (video.webkitRequestFullscreen) {
                     video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) {
-                    video.msRequestFullscreen();
                 }
 
                 video.onended = function() {
@@ -174,7 +174,8 @@
 
         function playVideo() {
             var video = document.getElementById("myVideo");
-            video.volume = 1.0; // 🔊 Đảm bảo âm lượng tối đa khi nhấn play
+            video.muted = false;
+            video.volume = 1.0;
             video.play();
             document.getElementById("play-button").style.display = "none";
         }
@@ -182,6 +183,3 @@
 
 </body>
 </html>
-
-
-
