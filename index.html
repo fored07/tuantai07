@@ -4,36 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tặng Anh Em Xã Đoàn 10A1</title>
+
+    <!-- ⚡ Thông tin hiển thị khi gửi link qua app (Facebook, Zalo, Messenger,...) -->
+    <meta property="og:title" content="Tặng Anh Em Xã Đoàn 10A1">
+    <meta property="og:description" content="Một món quà nhỏ gửi đến anh em lớp 10A1 ❤️">
+    <meta property="og:image" content="https://sf-static.upanhlaylink.com/img/image_202510263ab791b587aa474250d3bdbfe00b14c8.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tenmiencuaban.com/"> <!-- 🔁 thay bằng link web của bạn -->
+
+    <!-- Cho Twitter / Messenger -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tặng Anh Em Xã Đoàn 10A1">
+    <meta name="twitter:description" content="Một món quà nhỏ gửi đến anh em lớp 10A1 ❤️">
+    <meta name="twitter:image" content="https://sf-static.upanhlaylink.com/img/image_202510263ab791b587aa474250d3bdbfe00b14c8.jpg">
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
         body {
             font-family: 'Orbitron', sans-serif;
             text-align: center;
-            background-color: #000;
+            background: radial-gradient(circle at top, #001, #000);
             color: white;
             margin: 0;
             overflow: hidden;
         }
+
+        @keyframes neonPulse {
+            0%, 100% { text-shadow: 0 0 5px #0ff, 0 0 15px #0ff, 0 0 30px #0ff; }
+            50% { text-shadow: 0 0 10px #00f, 0 0 25px #00f, 0 0 50px #00f; }
+        }
+
         .neon-text {
             font-size: 24px;
             color: #0ff;
-            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff, 0 0 20px #0ff;
+            animation: neonPulse 2s infinite;
         }
+
         #login-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
+
         #login-form {
             background: rgba(20, 20, 20, 0.9);
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 12px;
             border: 2px solid #0ff;
-            box-shadow: 0 0 20px #0ff;
+            box-shadow: 0 0 25px #0ff;
             text-align: center;
+            transition: 0.3s;
         }
+
+        #login-form:hover {
+            box-shadow: 0 0 40px #00f;
+        }
+
         input, button {
             padding: 10px;
             margin: 5px;
@@ -42,24 +70,38 @@
             border-radius: 5px;
             font-size: 16px;
         }
+
         input {
             background: #111;
             color: #0ff;
             border: 1px solid #0ff;
             text-align: center;
         }
+
         button {
             background: #0ff;
             color: black;
             cursor: pointer;
             font-weight: bold;
             text-transform: uppercase;
+            transition: 0.3s;
         }
+
         button:hover {
             background: #00f;
             color: white;
-            box-shadow: 0 0 10px #00f;
+            box-shadow: 0 0 15px #00f;
         }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #0ff;
+            box-shadow: 0 0 15px #0ff;
+        }
+
+        /* Video + Thumbnail */
         #video-container {
             display: none;
             width: 100vw;
@@ -71,19 +113,25 @@
             align-items: center;
             justify-content: center;
         }
+
         video {
             width: 80vw;
             height: 80vh;
             border: 3px solid #0ff;
-            box-shadow: 0 0 20px #0ff;
+            box-shadow: 0 0 25px #0ff;
+            border-radius: 10px;
         }
-        .avatar {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
+
+        #thumbnail {
+            position: absolute;
+            width: 80vw;
+            height: 80vh;
             border: 3px solid #0ff;
-            box-shadow: 0 0 15px #0ff;
+            box-shadow: 0 0 25px #0ff;
+            border-radius: 10px;
+            object-fit: cover;
         }
+
         #play-button {
             display: none;
             position: absolute;
@@ -92,23 +140,30 @@
             transform: translate(-50%, -50%);
             background: rgba(0, 255, 255, 0.8);
             color: black;
-            padding: 10px 20px;
+            padding: 10px 25px;
             font-size: 20px;
             font-weight: bold;
             border: none;
             cursor: pointer;
             border-radius: 10px;
-            box-shadow: 0 0 10px #0ff;
+            box-shadow: 0 0 15px #0ff;
+            transition: 0.3s;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
         }
+
         #play-button:hover {
             background: #00f;
             color: white;
-            box-shadow: 0 0 20px #00f;
+            box-shadow: 0 0 25px #00f;
         }
 
-        /* Video toàn màn hình trên điện thoại */
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
         @media (max-width: 768px) {
-            video {
+            video, #thumbnail {
                 width: 100vw;
                 height: 100vh;
             }
@@ -128,8 +183,8 @@
     </div>
 
     <div id="video-container">
+        <img id="thumbnail" src="https://sf-static.upanhlaylink.com/img/image_202510263ab791b587aa474250d3bdbfe00b14c8.jpg" alt="Thumbnail">
         <video id="myVideo" playsinline muted autoplay>
-            <!-- ⚠️ Thay link dưới đây bằng link mp4 thật -->
             <source src="doama.mp4" type="video/mp4">
         </video>
         <button id="play-button" onclick="playVideo()">▶ Phát Video</button>
@@ -137,36 +192,31 @@
 
     <script>
         function checkLogin() {
-            var user = document.getElementById("username").value;
-            var pass = document.getElementById("password").value;
+            var user = document.getElementById("username").value.trim();
+            var pass = document.getElementById("password").value.trim();
             if (user === "tuantai" && pass === "2207") {
                 document.getElementById("login-container").style.display = "none";
                 var videoContainer = document.getElementById("video-container");
                 var video = document.getElementById("myVideo");
                 var playButton = document.getElementById("play-button");
+                var thumbnail = document.getElementById("thumbnail");
 
                 videoContainer.style.display = "flex";
-
-                // Bật âm thanh sau khi đăng nhập
                 video.muted = false;
                 video.volume = 1.0;
 
                 video.play().then(() => {
                     playButton.style.display = "none";
+                    thumbnail.style.display = "none";
                 }).catch(() => {
                     playButton.style.display = "block";
                 });
 
-                // Yêu cầu toàn màn hình
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.webkitRequestFullscreen) {
-                    video.webkitRequestFullscreen();
-                }
+                if (video.requestFullscreen) video.requestFullscreen();
+                else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
 
-                video.onended = function() {
-                    document.getElementById("video-container").style.display = "none";
-                };
+                video.onplay = () => thumbnail.style.display = "none";
+                video.onended = () => videoContainer.style.display = "none";
             } else {
                 alert("Sai tài khoản hoặc mật khẩu!");
             }
@@ -174,13 +224,14 @@
 
         function playVideo() {
             var video = document.getElementById("myVideo");
+            var thumbnail = document.getElementById("thumbnail");
             video.muted = false;
             video.volume = 1.0;
             video.play();
+            thumbnail.style.display = "none";
             document.getElementById("play-button").style.display = "none";
         }
     </script>
 
 </body>
 </html>
-
