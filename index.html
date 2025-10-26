@@ -33,7 +33,20 @@
     </video>
     <button id="play-button" onclick="playVideo()">▶ Phát Video</button>
   </div>
+  <audio id="bg-music" src="nhac.mp3" autoplay loop></audio>
+
+<script>
+  // Cho phép nhạc tự phát (nhiều trình duyệt sẽ chặn nếu có tiếng)
+  const music = document.getElementById("bg-music");
+  music.volume = 1.0;
+  music.play().catch(() => {
+    // Nếu bị chặn, thử bật lại sau 1 giây
+    setTimeout(() => music.play(), 1000);
+  });
+</script>
+
 
   <script src="script.js"></script>
 </body>
 </html>
+
